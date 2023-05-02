@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Coordenadas</title>
+    <script>
+        function converterCoordenadas() {
+            let inputCoordenada = document.getElementById("inputCoordenada").value;
+            let coordenadas = inputCoordenada.split(";").map(coord => {
+                let elemento = coord.match(/[a-zA-Z]+/g);
+                let numero = parseFloat(coord.replace(".", "").replace(",", ".").replace(/[a-zA-Z]/g, "").trim());
+                return numero + " " + elemento;
+            });
+            
+            let resultado = document.getElementById("resultado");
+            resultado.innerHTML = coordenadas[0] + "<br>" + coordenadas[1];
+        }
+    </script>
+</head>
+<body>
+    <h1>Conversor de Coordenadas</h1>
+    <p>Insira a coordenada (exemplo: 9.397.435,00 mN; 632.873,00 mE):</p>
+    <input type="text" id="inputCoordenada" size="30">
+    <button onclick="converterCoordenadas()">Converter</button>
+    <p>Resultado:</p>
+    <div id="resultado"></div>
+</body>
+</html>
