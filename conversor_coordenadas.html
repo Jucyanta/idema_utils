@@ -2,7 +2,81 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Conversor de Coordenadas</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            font-size: 16px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Conversor de Coordenadas</h1>
+        <p>Insira a coordenada (exemplo: 9.397.435,00 mN; 632.873,00 mE):</p>
+        <input type="text" id="inputCoordenada" size="30">
+        <button onclick="converterCoordenadas()">Converter</button>
+        <div id="resultado"></div>
+    </div>
+
     <script>
         function converterCoordenadas() {
             let inputCoordenada = document.getElementById("inputCoordenada").value;
@@ -11,18 +85,10 @@
                 let numero = parseFloat(coord.replace(".", "").replace(",", ".").replace(/[a-zA-Z]/g, "").trim());
                 return numero + " " + elemento;
             });
-            
+
             let resultado = document.getElementById("resultado");
             resultado.innerHTML = coordenadas[0] + "<br>" + coordenadas[1];
         }
     </script>
-</head>
-<body>
-    <h1>Conversor de Coordenadas</h1>
-    <p>Insira a coordenada (exemplo: 9.397.435,00 mN; 632.873,00 mE):</p>
-    <input type="text" id="inputCoordenada" size="30">
-    <button onclick="converterCoordenadas()">Converter</button>
-    <p>Resultado:</p>
-    <div id="resultado"></div>
 </body>
 </html>
